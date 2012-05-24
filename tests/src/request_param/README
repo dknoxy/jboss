@@ -1,0 +1,8 @@
+To execute, edit the TARGET_URL in java_poc.rb and then:
+
+ruby java_poc.rb
+
+rubygems rpm and tarball is provided. 
+
+java_poc.pl is a pearl copy of the ruby script. It is provided as an 
+alternative; i.e., if ruby is out of the question. The config is the same as the ruby script.

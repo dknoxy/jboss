@@ -1,0 +1,11 @@
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/repos/srtvulns/!svn/ver/1015/trunk/components/tomcat/CVE-2012-0022/jbossweb/examples.war/WEB-INF
+END
+web.xml
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/repos/srtvulns/!svn/ver/1015/trunk/components/tomcat/CVE-2012-0022/jbossweb/examples.war/WEB-INF/web.xml
+END
