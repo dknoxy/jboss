@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<project name="test-apps" default="compile" basedir=".">
+
+	<property name="lib.dir" value="./lib" />
+	<path id="base.path">
+		<fileset dir="lib">
+			<include name="*.jar"/>
+		</fileset>
+		<pathelement location="classes"/>
+	</path>
+
+	<target name="help">
+		
+	</target>
+
+	<target name="compile">
+		<delete dir="classes" quiet="true"/>
+		<mkdir dir="classes"/>
+		<javac srcdir="java"
+				destdir="classes"
+				target="1.5"
+				classpathref="base.path"/>
+	</target>
+
+	<target name="test">
+		<java classname="org.jboss.tomcat5.UserTest"
+			classpathref="base.path" output="usertest.log">
+			<sysproperty key="catalina.base" path="."/>
+		</java>
+		<echo> "Test output in usertest.log" </echo>
+	</target>
+</project>
