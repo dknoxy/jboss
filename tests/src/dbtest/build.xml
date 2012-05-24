@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+
+<project name="dbtest" default="war-dbtest" basedir=".">
+
+	<target name="war-dbtest">
+		<war destfile="DBTest.war"
+		  webxml="./WEB-INF/web.xml">
+		  <webinf dir="./WEB-INF"/>
+		  <metainf dir="./META-INF"/>
+		  <fileset dir="./" includes="*.jsp,*.html"/>
+		</war>
+	</target>
+
+</project>
