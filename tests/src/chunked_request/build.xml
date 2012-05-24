@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project name="npe-request-chunked-" default="build.jar" basedir=".">
+	<property name="src.dir" value="java"/>
+	<property name="bin.dir" value="classes"/>
+
+	<target name="build.java">
+		<mkdir dir="${bin.dir}"/>
+		<javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+	</target>
+
+	<target name="build.jar" depends="build.java">
+		<jar destfile="npe-request-chunked.jar" basedir="${bin.dir}"/>
+	</target>
+</project>

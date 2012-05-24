@@ -1,0 +1,3 @@
+This tests database connectivity via a jsp. Use sql/javatest.sql to create
+the database. Names and datasource are already set in context.xml and web.xml. 
+Then run with http://localhost:8080/DBTest/index.jsp
