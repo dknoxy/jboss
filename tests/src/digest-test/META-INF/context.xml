@@ -1,0 +1,12 @@
+<Context>
+	<Realm className="org.apache.catalina.realm.JDBCRealm"
+		connectionName="javauser"
+		connectionPassword="javadude"
+		connectionURL="jdbc:mysql://localhost/users"
+		driverName="com.mysql.jdbc.Driver"
+		userTable="userauth"
+		userNameCol="username"
+		userCredCol="userpass"
+		userRoleTable="userroles"
+		roleNameCol="rolename" />
+</Context>
