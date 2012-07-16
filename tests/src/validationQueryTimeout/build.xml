@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<project name="validationQueryTimeout" default="test" basedir=".">
+
+	<path id="test.classpath">
+		<pathelement location="./lib/commons-dbcp.jar" />
+		<pathelement location="./lib/commons-pool.jar" />
+		<pathelement location="./build/classes"/>
+	</path>
+
+	<target name="compile">
+		<mkdir dir="build/classes"/>
+		<javac srcdir="./src" includes="**/*.java" destdir="./build/classes"
+			classpathref="test.classpath"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="build/classes"/>
+	</target>
+
+	<target name="clean.compile" depends="clean,compile"/>
+
+
+	<target name="test" depends="compile">
+	   <whichresource property="class.location"
+			class="org.jboss.commons_dbcp.test.ValidationQueryTimeoutTest"
+			classpathref="test.classpath"/>
+		<echo>"${class.location}"</echo>
+	  	<java classname="org.jboss.commons_dbcp.test.ValidationQueryTimeoutTest"
+			classpathref="test.classpath"/>
+	</target>
+</project>

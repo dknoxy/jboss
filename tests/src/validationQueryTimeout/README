@@ -1,0 +1,5 @@
+To run the test,
+(1) in the lib directory, build symlinks to the commons-dbcp and commons-pool libs you want to test. 
+(2) Always adjust the path test.classpath in the build xml.
+(3) the test target is the default
+(4) The test will show output indicating success or failure.
