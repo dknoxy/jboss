@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+
+<project name="web_helloworld" default="war" basedir=".">
+
+	<target name="war">
+		<war destfile="helloworld.war"
+		  webxml="./WEB-INF/web.xml">
+		  <webinf dir="./WEB-INF"/>
+		  <metainf dir="./META-INF"/>
+		  <fileset dir="./" includes="*.jsp,*.html,images/*jpg"/>
+		</war>
+		<tar destfile="web_helloworld.tar.gz" compression="gzip"
+			includes="helloworld.war,README"
+			basedir="./"
+			/>
+	</target>
+
+</project>

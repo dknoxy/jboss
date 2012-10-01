@@ -1,0 +1,5 @@
+<Context 
+displayName="helloworld"
+docBase="${catalina.base}/host1">
+</Context>
+

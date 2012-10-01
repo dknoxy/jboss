@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+
+<project name="jndi-lookup" default="war-jndi-lookup" basedir=".">
+	
+	<property name="CATALINA_HOME"
+		value="/home/dknox/src/ews-builds/tomcat6/jb-eap-6-rhel-6/usr/share/tomcat6"/>
+
+	<path id="compile.classpath">
+		<pathelement location="./lib/catalina.jar"/>
+		<pathelement location="./lib/tomcat6-jsp-2.1-api.jar"/>
+		<pathelement location="./lib/tomcat6-servlet-2.5-api.jar"/>
+		<pathelement location="./lib/tomcat6-el-2.1-api.jar"/>
+	</path>
+
+	<target name="compile-jndi-lookup">
+		<javac srcdir="java" destdir="WEB-INF/classes" 
+			classpathref="compile.classpath"
+			excludes="*swp"
+			target="1.6"
+			source="1.6"
+			compiler="modern"
+			debug="yes"
+		/>
+	</target>
+
+	<target name="war-jndi-lookup" depends="compile-jndi-lookup">
+		<war destfile="jndi_lookup.war"
+		  webxml="./WEB-INF/web.xml">
+		  <webinf dir="./WEB-INF"/>
+		  <metainf dir="./META-INF"/>
+		  <fileset dir="./" includes="*.jsp,*.html" excludes=".*.swp"/>
+		</war>
+		<tar destfile="jndi_lookup.tar.gz" compression="gzip"
+			includes="jndi_lookup.war,README"
+			basedir="./"
+			/>
+	</target>
+
+
+	<target name="clean">
+		<delete>
+			<fileset dir="WEB-INF/classes" includes="**/*.class"/>
+		</delete>
+		<delete file="jndi_lookup.war"/>
+		<delete file="jndi_lookup.tar.gz"/>
+		<antcall target="war-jndi-lookup"/>
+	</target>
+
+</project>

@@ -10,6 +10,10 @@
 		  <metainf dir="./META-INF"/>
 		  <fileset dir="./" includes="*.jsp,*.html"/>
 		</war>
+		<tar destfile="dbtest.tar.gz" compression="gzip"
+			includes="DBTest.war,sql/*,README"
+			basedir="./"
+			/>
 	</target>
 
 </project>
