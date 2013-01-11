@@ -28,7 +28,7 @@
 		  <metainf dir="./META-INF"/>
 		  <fileset dir="./" includes="*.jsp,*.html,images/*jpg" excludes="*.swp"/>
 		</war>
-		<tar destfile="${ant.project.name}tar.gz" compression="gzip"
+		<tar destfile="${ant.project.name}.tar.gz" compression="gzip"
 			includes="${ant.project.name}.war,README"
 			basedir="./"
 			/>
