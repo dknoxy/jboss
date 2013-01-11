@@ -1,0 +1,34 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+     http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+     version="3.0">
+
+	<description>A FORM based authentication test using JAAS</description>
+
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>ETTRealm</realm-name>
+		<form-login-config>
+			<form-login-page>/login.jsp</form-login-page>
+			<form-error-page>/fail_login.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+
+	<security-role>
+		<description>ETT User</description>
+		<role-name>ETTUser</role-name>
+	</security-role>
+
+	<security-constraint>
+		<display-name>ETTRealm Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>ETTRealm Secure Area</web-resource-name>
+			<url-pattern>/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>ETTUser</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+</web-app>

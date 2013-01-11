@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+
+<project name="jaas_test" default="archive" basedir=".">
+
+	<target name="init">
+		<mkdir dir="${basedir}/server/classes"/>
+		<mkdir dir="${basedir}/server/lib"/>
+		<mkdir dir="${basedir}/WEB-INF/lib"/>
+	</target>	
+
+	<target name="compile" depends="init">
+		<javac srcdir="${basedir}/server/java"
+			destdir="${basedir}/server/classes"
+			/>
+		<jar destfile="${basedir}/server/lib/${ant.project.name}.jar"
+				basedir="${basedir}/server/classes/"
+				/>
+		<copy file="${basedir}/server/lib/${ant.project.name}.jar" 
+				todir="${basedir}/WEB-INF/lib"
+				/>
+	</target>
+
+	<target name="archive" depends="compile">
+		<war destfile="${ant.project.name}.war"
+		  webxml="./WEB-INF/web.xml">
+		  <webinf dir="./WEB-INF"/>
+		  <metainf dir="./META-INF"/>
+		  <fileset dir="./" includes="*.jsp,*.html,images/*jpg" excludes="*.swp"/>
+		</war>
+		<tar destfile="${ant.project.name}tar.gz" compression="gzip"
+			includes="${ant.project.name}.war,README"
+			basedir="./"
+			/>
+	</target>
+
+</project>

@@ -1,0 +1,12 @@
+<Context 
+displayName="ETT JAAS Test"
+docBase="${catalina.base}/jaas_test">
+
+	<Realm 
+		className="org.apache.catalina.realm.JAASRealm"
+		appName="ETTRealm"
+		userClassNames="org.ett.authentication.EttUser"
+		roleClassNames="org.ett.authentication.EttRole"
+		/>
+</Context>
+
