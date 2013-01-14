@@ -1,7 +1,7 @@
 
 This is a framework for testing JAAS security. The default is the 
 Krb5LoginModule, but other modules can be used easily by editing
-the server/conf/jaas_test.conf. 
+server/conf/jaas_test.conf. 
 
 The JAASRealm is a tomcat specific artifact. Mileage on other 
 containers will indeed vary.
@@ -14,7 +14,8 @@ Deploying:
 - copy server/conf/jaas_test.conf to ${CATALINA_BASE}/conf
 - Edit catalina.sh (or sysconfig/tomcatx) & add the following line to JAVA_OPTS
 -- JAVA_OPTS="$JAVA_OPTS -Djava.security.auth.login.config=$CATALINA_BASE/conf/jaas_test.conf"
-
+- copy server/lib/jaas_test.jar to ${CATALINA_BASE}/lib
 - copy jaas_test.war to ${CATALINA_BASE}/webapps
 - Start tomcat
-- http://localhost:8080/jaas_test should produce the login page
+- http://localhost:8080/jaas_test will produce the login page
+-- Jan 14 2013 At this point the login will always fail

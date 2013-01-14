@@ -16,9 +16,6 @@
 		<jar destfile="${basedir}/server/lib/${ant.project.name}.jar"
 				basedir="${basedir}/server/classes/"
 				/>
-		<copy file="${basedir}/server/lib/${ant.project.name}.jar" 
-				todir="${basedir}/WEB-INF/lib"
-				/>
 	</target>
 
 	<target name="archive" depends="compile">
