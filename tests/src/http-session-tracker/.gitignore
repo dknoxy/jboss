@@ -1,0 +1,6 @@
+*.class
+*.war
+*.jar
+*.gz
+*.tar
+*.swp

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<h1>Session Tracking</h1>
+
+		<div id="div1"> Session Values </div>
+
+		<script language="JavaScript">
+
+		  Response.Write("Client Side ========= ");
+		 
+		  for ( s = new Enumerator(Session.Contents); 
+	          !s.atEnd(); 
+				 s.moveNext(); ) { 
+        	 Response.Write(s.item() + " :: "); 
+		    Response.Write(Session(s.item()); 
+		    Response.Write("<br>"); 
+		  } 
+	   
+		</script>
+	</body>
+</html>
+

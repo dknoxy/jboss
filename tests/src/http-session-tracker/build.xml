@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+
+<project name="http_session_tracker" default="archive" basedir=".">
+
+	<property name="base.j2ee.resources.dir" 
+		location="/home/dknox/src/tomcat_community_distros/7.0.30/apache-tomcat-7.0.30/"/>
+
+	<path id="compile.classpath">
+		<fileset dir="${base.j2ee.resources.dir}">
+			<include name="lib/servlet-api.jar"/>
+		</fileset>
+		<fileset dir="${base.j2ee.resources.dir}">
+			<include name="bin/tomcat-juli.jar"/>
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${basedir}/server/classes"/>
+		<mkdir dir="${basedir}/server/lib"/>
+		<mkdir dir="${basedir}/WEB-INF/lib"/>
+		<mkdir dir="${basedir}/WEB-INF/classes"/>
+	</target>	
+
+	<target name="compile" depends="init">
+		<javac srcdir="${basedir}/server/java"
+			destdir="${basedir}/server/classes"
+			classpathref="compile.classpath"
+			/>
+		<jar destfile="${basedir}/server/lib/${ant.project.name}.jar"
+				basedir="${basedir}/server/classes/"
+				/>
+	</target>
+
+	<target name="archive" depends="compile">
+	   <copy file="${basedir}/server/lib/${ant.project.name}.jar"
+			todir="./WEB-INF/lib"/>
+		<war destfile="${ant.project.name}.war"
+		  webxml="./WEB-INF/web.xml">
+		  <webinf dir="./WEB-INF" excludes=".*swp"/>
+		  <metainf dir="./META-INF"/>
+		  <fileset dir="./" 
+		  	includes="*.jsp,*.html,images/*jpg" 
+			excludes="server/*"
+			/>
+		</war>
+		<tar destfile="${ant.project.name}.tar.gz" compression="gzip"
+			includes="${ant.project.name}.war,README"
+			basedir="./"
+			/>
+	</target>
+</project>

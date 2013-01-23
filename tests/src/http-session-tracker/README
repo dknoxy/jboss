@@ -1,0 +1,12 @@
+
+A means to display session data from three points: (1)client side, (2)through a filter, and (3)into the server side. At each point, all session keys and values
+are written and formatted in the response. The expected platform is tomcat6 and 7.
+
+Building:
+ant archive
+The deployment includes the CsrfPreventionFilter. You can turn this off if desired by editing the web.xml and commenting the references to the filter. When the CsrfPreventionFilter is in the web.xml the expected result is SC_FORBIDDEN.
+
+
+Deploying:
+Copy http_session_tracker to ${CATALINA_BASE}/webapps
+

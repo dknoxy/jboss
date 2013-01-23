@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+
+<web-app>
+	<servlet>
+		<servlet-name>SessionTracker</servlet-name>
+		<servlet-class>org.redhat.tomcat7.tests.http_session_tracker.SessionTrackerServlet</servlet-class>>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>SessionTracker</servlet-name>
+		<url-pattern>/*</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>SessionTrackerFilter</filter-name>
+		<filter-class>
+		   org.redhat.tomcat7.tests.http_session_tracker.SessionTrackerFilter
+		</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>SessionTrackerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	  <filter>
+	     <filter-name>csrf</filter-name>
+		  <filter-class>org.apache.catalina.filters.CsrfPreventionFilter</filter-class>
+	</filter>
+
+	 <filter-mapping>
+	   <filter-name>csrf</filter-name>
+	   <url-pattern>/*</url-pattern>
+	 </filter-mapping>
+
+</web-app>
