@@ -43,18 +43,22 @@ public class SessionTrackerFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest)req;
 		HttpServletResponse response = (HttpServletResponse)resp;
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);
 		ServletContext context = config.getServletContext();
 //		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		out.println("SessionTrackerFilter =========");
-		String obj = null;
-		for (Enumeration e = session.getAttributeNames();
-			 e.hasMoreElements() ; 
-			 obj = e.nextElement().toString()) 
-		{
-			out.println("Key: "+ obj + " :: " + 
-				session.getAttribute(obj));
+		if (session != null) {
+			String obj = null;
+			for (Enumeration e = session.getAttributeNames();
+				 e.hasMoreElements() ; 
+				 obj = e.nextElement().toString()) 
+			{
+				out.println("Key: "+ obj + " :: " + 
+					session.getAttribute(obj));
+			}
+		} else {
+			out.println("Session is null");
 		}
 		log.info("Session Tracker Filter calling chain");
 		chain.doFilter(req, resp);
