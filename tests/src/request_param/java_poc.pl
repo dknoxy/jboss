@@ -10,7 +10,7 @@ use LWP;
 #my $url='http://localhost:8080/servlets-examples/servlet/RequestParamExample';
 #my $url='http://djorm-rhel61-ews.cloud.lab.eng.bne.redhat.com:8080/examples/servlets/servlet/RequestParamExample'
 
-my $url='http://tyan-gt24-12.rhts.eng.bos.redhat.com:8080/examples/servlets/servlet/RequestParamExample';
+my $url='http://hp-xw9300-01.rhts.eng.bos.redhat.com:8080/examples/servlets/servlet/RequestParamExample';
 
 my $browser = LWP::UserAgent->new;
 

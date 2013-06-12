@@ -16,7 +16,7 @@ public class ChunkedHttpRequest {
 		URL serverAddress;
 
 		try {
-			serverAddress = new URL("http://localhost:8080");
+			serverAddress = new URL("http://" + args[0] +":8080");
 			conn = (HttpURLConnection)serverAddress.openConnection();
 			conn.setChunkedStreamingMode(8 * 1024);
 			conn.setDoOutput(true);

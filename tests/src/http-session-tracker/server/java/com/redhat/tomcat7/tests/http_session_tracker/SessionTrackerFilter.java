@@ -32,8 +32,8 @@ public class SessionTrackerFilter implements Filter {
 	public void init(FilterConfig filterConfig)
 	 	throws ServletException  {
 
-			log.info("SessionTrackerFilter initialization");
-			this.config = filterConfig;
+		log.info("SessionTrackerFilter initialization");
+		this.config = filterConfig;
 	}
 
 	@Override
@@ -46,28 +46,26 @@ public class SessionTrackerFilter implements Filter {
 		HttpSession session = request.getSession(false);
 		ServletContext context = config.getServletContext();
 //		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("SessionTrackerFilter =========");
+
+		log.info("Session ====");
 		if (session != null) {
 			String obj = null;
 			for (Enumeration e = session.getAttributeNames();
 				 e.hasMoreElements() ; 
 				 obj = e.nextElement().toString()) 
 			{
-				out.println("Key: "+ obj + " :: " + 
+				log.info("Key: "+ obj + " :: " + 
 					session.getAttribute(obj));
 			}
 		} else {
-			out.println("Session is null");
+			log.info("Session is null");
 		}
-		log.info("Session Tracker Filter calling chain");
 		chain.doFilter(req, resp);
-		log.info("Session Tracker Filter return from chain");
 	}
 
 	@Override
 	public void destroy() {
-		log.debug("SessionTrackerFilter::destroy");
+		log.info("SessionTrackerFilter::destroy");
 	}
 
 }

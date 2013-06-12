@@ -10,10 +10,13 @@ pid=$1          # required
 user=$2         # required
 count=${3:-10}  # defaults to 10 times
 delay=${4:-0.5} # defaults to 0.5 seconds
+echo >&2 "Using PID $pid with User $2"
+
 while [ $count -gt 0 ]
 	do
-   sudo -u $user jstack -l $pid >jstack.$pid.$(date +%H%M%S.%N)
-	sleep $delay
-   let count--
-   echo -n "."
+	   echo >&2 "sudo -u $user jstack -l $pid"
+      sudo -u $user jstack -l $pid >jstack.$pid.$(date +%H%M%S.%N)
+	   sleep $delay
+      let count--
+      echo -n "."
 done

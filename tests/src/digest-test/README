@@ -1,1 +1,14 @@
-Does not work
+
+Configure:
+- Replace the UserDatabaseRealm in server.xml with the contents of 
+conf/server.xml.realm
+- Replace the  login-config manager/WEB-INF/web.xml with the contents
+of conf/manager-web.xml
+- Comment the 401 error-page in manager/WEB-INF/web.xml. Otherwise it 
+-- won't work. The 401.jsp overrides the auth-type.
+- Generate a md5sum password
+-- echo "password" | md5sum
+- Plug the @result@ into tomcat-users.xml: 
+-- <role rolename="manager"/>
+-- <user username="tomcat" password="@result@" roles="manager"/>
+
